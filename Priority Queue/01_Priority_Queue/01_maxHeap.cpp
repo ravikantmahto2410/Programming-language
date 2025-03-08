@@ -3,7 +3,6 @@ using namespace std;
 
 class MaxHeap {
     vector<int> hp;
-
     void upheapify(int ci){
         while(ci > 0){
             int pi = (ci - 1) / 2;
