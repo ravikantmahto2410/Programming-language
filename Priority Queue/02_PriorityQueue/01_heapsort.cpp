@@ -3,6 +3,7 @@ using namespace std;
 
 class MaxHeap {
     vector<int> hp;
+    int i; //here i denotes 0 to i  everything is maxheap
     void upheapify(int ci){
         while(ci > 0){
             int pi = (ci - 1) / 2;
@@ -14,16 +15,16 @@ class MaxHeap {
             }
         }
     }
-    void downheapify(int idx){ //this is the index from where we want to start
+    void downheapify(int idx, int bound){ //this is the index from where we want to start
         while(idx < hp.size()){
             int lc = 2 * idx + 1;
             int rc = 2 * idx + 2;
-            if(lc >= hp.size()) break; // idx -> leaf
+            if(lc >= bound) break; // idx -> leaf
             int maxElem = idx;
             if(hp[lc] > hp[maxElem]){
                 maxElem = lc;
             }
-            if(rc < hp.size() && hp[rc] > hp[maxElem]){
+            if(rc < bound && hp[rc] > hp[maxElem]){
                 maxElem = rc;
             }
             if(maxElem != idx){
@@ -36,13 +37,7 @@ class MaxHeap {
     }
 
 public: 
-    void push(int element) {
-        /*
-        Time Complexity = O(logn);
-        */
-        hp.push_back(element);
-        upheapify(hp.size() - 1);
-    }
+    
 
     void pop(){
 
@@ -53,10 +48,9 @@ public:
         if(empty()) return;
         swap(hp[0],hp[hp.size()-1]);
         hp.pop_back();
-        if(!empty()){
-            downheapify(0);
-        }
-        
+        i--;
+        if(!empty());
+        downheapify(0 , i);
     }
     int peek(){
         /*
@@ -76,24 +70,24 @@ public:
         }
         cout<<"]"<<endl;
     }
+
+    void heapSort(){
+        
+    }
+    //constructor
+    MaxHeap(vector<int> v){
+        hp = v;
+        //reverse mein loop chalayenge and we can skip half of the elements
+        int n = hp.size();
+        int i = n;
+        for(int j = n / 2; j >= 0; j--){
+            downheapify(j, i);
+        }
+    }
 };
 int main(){
-    MaxHeap hp;
-    hp.push(3);
-    hp.push(4);
-    hp.push(11);
-    hp.push(9);
-    hp.push(14);
-    hp.push(-1);
-    hp.push(30);
-    hp.push(44);
-    hp.push(50);
-    hp.display();
-    hp.pop();
-    hp.display();
-    hp.pop();
-    hp.display();
-    hp.pop();
+    vector<int>v {9, 6, 1, 19, 3, 2, 8, 12, 5};
+    MaxHeap hp(v);
     hp.display();
     return 0;
 }

@@ -5,7 +5,7 @@ class MaxHeap {
     vector<int> hp;
     void upheapify(int ci){
         while(ci > 0){
-            int pi = (ci - 1) / 2;
+            int pi = (ci - 1) / 2; //parent index
             if(hp[pi] < hp[ci]) {
                 swap(hp[pi], hp[ci]);
                 ci = pi;
@@ -20,12 +20,12 @@ public:
         hp.push_back(element);
         upheapify(hp.size() - 1);
     }
-    int peek(){
+    int peek(){ // this function will return the element of highest priority
         if(empty()) return INT_MIN;
         return hp[0];
     }
 
-    bool empty(){
+    bool empty(){ //if heap size is 0
         return hp.size() == 0;
     }
     void display() {
