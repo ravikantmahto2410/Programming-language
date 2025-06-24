@@ -5,7 +5,7 @@ using namespace std;
 
 void storeSubset(string ans, string original, vector<string>& v){
     if(original == ""){
-        cout<<ans<<endl;
+        v.push_back(ans);
         return;
     }
     char ch = original[0];
@@ -19,6 +19,6 @@ int main(){
     vector<string>v;
     storeSubset("",str,v);
     for(string ele : v){
-        cout<<endl;
+        cout<<ele<<endl;
     }
 }
