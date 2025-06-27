@@ -1,14 +1,7 @@
 #include<bits/stdc++.h>
 using  namespace std;
 
-void display(stack<int>&st){
-    if(st.size() == 0) return;
-    int x = st.top();
-    st.pop();
-    display(st);
-    cout<<x<<" ";
-    st.push(x);
-}
+
 void pushAtBottomRec(stack<int>&st,int val){
     if(st.size() == 0){
         st.push(val);
@@ -35,12 +28,16 @@ int main(){
     st.push(30);
     st.push(40);
     st.push(50);
-    display(st);
     
     // pushAtBottomRec(st , -10);
-    cout<<endl;
+    
     reverse(st);
-    display(st);
+
+    while(st.size() > 0){
+        cout<<st.top()<< " ";
+        st.pop();
+    
+    }
     
 
 }
