@@ -2,17 +2,17 @@
 #include<vector>
 using namespace std;
 
- void printSubset(int arr[], int n, int idx, vector<int> ans){
+ void printSubset(int arr[], int n, int idx, vector<int>v){
     if(idx==n){
-        for(int i=0;i<ans.size();i++){
-            cout<<ans[i]<<" ";
+        for(int i=0;i<v.size();i++){
+            cout<<v[i]<<" ";
         }
         cout<<endl;
         return;
     }
-    printSubset(arr,n,idx+1,ans);
-    ans.push_back(arr[idx]);
-    printSubset(arr,n,idx+1,ans);
+    printSubset(arr,n,idx+1,v);
+    v.push_back(arr[idx]);
+    printSubset(arr,n,idx+1,v);
 
     
 }

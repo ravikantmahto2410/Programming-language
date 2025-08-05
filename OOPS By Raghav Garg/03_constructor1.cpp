@@ -17,4 +17,5 @@ int main(){
     // Student s(76,"Raghav",92.6);//this will generate error
 
     cout<<s.name<<" "<<s.rno<<" "<<s.percent;
+    
 }

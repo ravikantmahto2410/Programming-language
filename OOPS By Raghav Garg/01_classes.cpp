@@ -30,6 +30,7 @@ int main(){
 
     
     // concept line ;
+    
     //suppose
     int r = 7;
     int z = r;
